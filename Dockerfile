@@ -7,8 +7,7 @@ ENV UV_CACHE_DIR=/root/.cache/pip
 RUN apk add --no-cache --virtual .build-dependencies build-base curl-dev bash libcurl
 RUN mkdir -p /app
 WORKDIR /app
-COPY pyproject.toml /app/
-COPY uv.lock /app/
-RUN --mount=type=cache,target=/root/.cache/pip pip install uv && uv sync
+COPY pyproject.toml uv.lock ./
+RUN --mount=type=cache,target=/root/.cache/pip pip install uv && uv pip install --system .
 COPY . /app/
 #RUN python /opt/manage.py check
