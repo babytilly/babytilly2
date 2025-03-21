@@ -34,7 +34,7 @@ dependencies = [
     "pycurl==7.45.4",
     "pymemcache==4.0.0",
     "pyuca==1.2",
-    "sentry-sdk[django]==2.20.0",
+    "sentry-sdk[django]==2.24.0",
     "sorl-thumbnail==12.10.0",
     "whitenoise==6.9.0",
 ]
