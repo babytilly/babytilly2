@@ -29,7 +29,7 @@ dependencies = [
     "django>=3.2,<4",
     "fontawesomefree==6.6.0",
     "gunicorn==23.0.0",
-    "Pillow==11.1.0",
+    "Pillow==11.2.1",
     "psycopg2-binary==2.9.10",
     "pycurl==7.45.4",
     "pymemcache==4.0.0",
