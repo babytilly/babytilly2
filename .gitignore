@@ -13,4 +13,5 @@ pg_data/
 .env
 .venv/
 latest.db
+dump.db
 media/

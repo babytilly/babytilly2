@@ -725,3 +725,21 @@ class MessageAttachment(models.Model):
     class Meta:
         verbose_name = _("attachment")
         verbose_name_plural = _("attachments")
+
+
+class Banner(models.Model):
+    """Banner model that can link to articles with an image"""
+    image = ImageField(_("image"), upload_to="banners/%Y/%m/%d/")
+    article = models.ForeignKey(
+        Article, 
+        verbose_name=_("article"), 
+        on_delete=models.CASCADE,
+        help_text=_("Article that this banner links to")
+    )
+
+    def __str__(self):
+        return f"Banner for {self.article}"
+
+    class Meta:
+        verbose_name = _("banner")
+        verbose_name_plural = _("banners")

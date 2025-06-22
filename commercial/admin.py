@@ -26,6 +26,7 @@ from commercial.models import (
     Message,
     MessageAttachment,
     Complaint,
+    Banner,
 )
 from commercial.tasks import send_message_mail
 
@@ -388,3 +389,11 @@ class ComplaintAdmin(admin.ModelAdmin):
                     )
         super().save_formset(request, form, formset, change)
         send_message_mail.delay_on_commit(complaint.id)
+
+
+class BannerAdmin(AdminImageMixin, admin.ModelAdmin):
+    list_display = ["article", "image"]
+    search_fields = ["article__id", "article__articleproperties__name"]
+    autocomplete_fields = ["article"]
+
+    fields = ('image', 'article')

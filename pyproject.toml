@@ -36,7 +36,7 @@ dependencies = [
     "pyuca==1.2",
     "sentry-sdk[django]==2.20.0",
     "sorl-thumbnail==12.10.0",
-    "whitenoise==6.9.0",
+    "whitenoise",
 ]
 
 [project.urls]

@@ -37,6 +37,7 @@ from commercial.models import (
     Complaint,
     Message,
     MessageAttachment,
+    Banner,
 )
 from commercial.tasks import send_order_email, send_complaint_mail
 
@@ -114,6 +115,10 @@ class ArticleListView(ActiveRequiredMixin, ListView):
             departament_id=self.request.user.profile.departament_id
         ).first()
         page_title = property.name if property else ""
+        
+        # Get random banners for this department
+        banners = Banner.objects.all().order_by('?')[:5]  # Get 5 random banners
+        
         context.update(
             {
                 "category": category,
@@ -122,6 +127,7 @@ class ArticleListView(ActiveRequiredMixin, ListView):
                 "paginator_list": settings.PAGINATOR,
                 "link": urlencode(params),
                 "page_title": page_title,
+                "banners": banners,
             }
         )
         return context
@@ -159,6 +165,7 @@ class ArticleSearchListView(ActiveRequiredMixin, ListView):
         params = self.request.GET.copy()
         if "page" in params:
             del params["page"]
+            
         context.update(
             {
                 "page_title": self.request.GET.get("query", "").strip(),
@@ -197,6 +204,10 @@ class ArticleNewListView(ActiveRequiredMixin, ListView):
         params = self.request.GET.copy()
         if "page" in params:
             del params["page"]
+            
+        # Get random banners
+        banners = Banner.objects.all().order_by('?')[:5]  # Get 5 random banners
+            
         context.update(
             {
                 "page_title": gettext_lazy("New"),
@@ -204,6 +215,7 @@ class ArticleNewListView(ActiveRequiredMixin, ListView):
                 "per_page": self.get_paginate_by(None),
                 "paginator_list": settings.PAGINATOR,
                 "link": urlencode(params),
+                "banners": banners,
             }
         )
         return context
@@ -233,6 +245,10 @@ class ArticleSaleListView(ActiveRequiredMixin, ListView):
         params = self.request.GET.copy()
         if "page" in params:
             del params["page"]
+            
+        # Get random banners
+        banners = Banner.objects.all().order_by('?')[:5]  # Get 5 random banners
+            
         context.update(
             {
                 "page_title": gettext_lazy("Sale"),
@@ -240,6 +256,7 @@ class ArticleSaleListView(ActiveRequiredMixin, ListView):
                 "per_page": self.get_paginate_by(None),
                 "paginator_list": settings.PAGINATOR,
                 "link": urlencode(params),
+                "banners": banners,
             }
         )
         return context
