@@ -11,7 +11,7 @@ from mptt.admin import MPTTModelAdmin
 from sorl.thumbnail.admin import AdminImageMixin
 
 from commercial.filters import ArticlePublishedFilter, CategoryPublishedFilter, ArticleNewFilter, ArticleSaleFilter, \
-    CategoryDepartamentFilter, ArticleDepartamentFilter
+    CategoryDepartamentFilter, ArticleDepartamentFilter, ComplaintHasAnswerFilter
 from commercial.forms import ArticleAdminForm, MessageForm
 from commercial.functions import export_department_to_xml
 from commercial.models import (
@@ -342,7 +342,7 @@ class MessageInlineAdmin(admin.StackedInline):
 class ComplaintAdmin(admin.ModelAdmin):
     search_fields = ["id"]
     list_display = ["id", "has_answer", "created_date", "user", "product_name", "status"]
-    list_filter = ["status", "user__profile__departament", "user"]
+    list_filter = ["status", ComplaintHasAnswerFilter, "user__profile__departament", "user"]
     inlines = [MessageInlineAdmin]
     autocomplete_fields = ["user"]
     readonly_fields = ["user", "date_of_purchase", "product_name", "invoice", "has_answer", "receipt"]
