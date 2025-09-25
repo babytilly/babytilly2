@@ -5,7 +5,6 @@ services:
     build: .
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
-      - MEMCACHED_URL=memcached://cache:11211
       - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/app:rw
@@ -14,7 +13,6 @@ services:
     depends_on:
       - db
       - redis
-      - cache
   db:
     image: library/postgres:11.12
     volumes:
@@ -23,10 +21,6 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
-  cache:
-    image: memcached
-    ports:
-      - "11211:11211"
   redis:
     image: redis
     ports:
