@@ -180,6 +180,18 @@ MEDIA_URL = "/media/"
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# For compatibility with sorl-thumbnail and Django 3.2
+# sorl-thumbnail expects STORAGES setting but we're on Django 3.2
+# This provides backward compatibility
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
