@@ -45,6 +45,7 @@ dependencies = [
     { name = "django-countries" },
     { name = "django-debug-toolbar" },
     { name = "django-environ" },
+    { name = "django-health-check" },
     { name = "django-mptt" },
     { name = "django-redis" },
     { name = "django-ses" },
@@ -70,6 +71,7 @@ requires-dist = [
     { name = "django-countries", specifier = "==7.6.1" },
     { name = "django-debug-toolbar", specifier = ">=4,<5" },
     { name = "django-environ", specifier = "==0.12.0" },
+    { name = "django-health-check", specifier = ">=3.18.3" },
     { name = "django-mptt", specifier = "==0.16.0" },
     { name = "django-redis", specifier = "==5.4.0" },
     { name = "django-ses", specifier = "==4.4.0" },
@@ -300,6 +302,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d6/04/65d2521842c42f4716225f20d8443a50804920606aec018188bbee30a6b0/django_environ-0.12.0.tar.gz", hash = "sha256:227dc891453dd5bde769c3449cf4a74b6f2ee8f7ab2361c93a07068f4179041a", size = 56804, upload-time = "2025-01-13T17:03:37.74Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/83/b3/0a3bec4ecbfee960f39b1842c2f91e4754251e0a6ed443db9fe3f666ba8f/django_environ-0.12.0-py2.py3-none-any.whl", hash = "sha256:92fb346a158abda07ffe6eb23135ce92843af06ecf8753f43adf9d2366dcc0ca", size = 19957, upload-time = "2025-01-13T17:03:32.918Z" },
+]
+
+[[package]]
+name = "django-health-check"
+version = "3.18.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/66/e9/0699ea3debfda75e5960ff99f56974136380e6f8202d453de7357e1f67fc/django_health_check-3.18.3.tar.gz", hash = "sha256:18b75daca4551c69a43f804f9e41e23f5f5fb9efd06cf6a313b3d5031bb87bd0", size = 20919, upload-time = "2024-06-22T14:34:32.627Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e2/1e/3b23b580762cca7456427731de9b90718d15eec02ebe096437469d767dfe/django_health_check-3.18.3-py2.py3-none-any.whl", hash = "sha256:f5f58762b80bdf7b12fad724761993d6e83540f97e2c95c42978f187e452fa07", size = 30331, upload-time = "2024-06-22T14:34:30.184Z" },
 ]
 
 [[package]]

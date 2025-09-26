@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from commercial.views import HomePage, ArticleSearchListView, PageDetailView
 
 urlpatterns = [
+    path("ht/", include("health_check.urls")),
     # path('ses/event-webhook/', csrf_exempt(SESEventWebhookView.as_view()), name='handle-event-webhook'),
     path("admin/", admin.site.urls),
     path("ckeditor/", include("ckeditor_uploader.urls")),
