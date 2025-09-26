@@ -4,7 +4,7 @@ ENV PYCURL_SSL_LIBRARY=openssl
 ENV UV_SYSTEM_PYTHON=true
 ENV UV_LINK_MODE=copy
 ENV UV_CACHE_DIR=/root/.cache/pip
-RUN apk add --no-cache --virtual .build-dependencies build-base curl-dev bash libcurl
+RUN apk add --no-cache --virtual .build-dependencies build-base curl-dev bash libcurl linux-headers
 RUN mkdir -p /app
 WORKDIR /app
 COPY pyproject.toml uv.lock ./
